@@ -5,7 +5,10 @@ class ProductsController < ApplicationController
     render json: products
   end
 
-
+  def show
+    product = Product.find_by(id: params[:id])
+    render json:product
+  end
 
 
 end
