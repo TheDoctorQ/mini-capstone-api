@@ -15,7 +15,7 @@ Content-Type: application/json
 }
 
 ###
-PATCH http://localhost:3000/products/1
+PATCH http://localhost:3000/products/2
 Content-Type: application/json
 
 {
@@ -29,5 +29,5 @@ Content-Type: application/json
 DELETE http://localhost:3000/products/4
 
 ###
-GET http://localhost:3000/query?name=kal&price=400
+GET http://localhost:3000/query/
 
