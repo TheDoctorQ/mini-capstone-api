@@ -24,3 +24,6 @@ Content-Type: application/json
   "image_url": "https://static.wikia.nocookie.net/starwars/images/c/c4/First_Blade.png/revision/latest/scale-to-width-down/999?cb=20141013005839",
   "description": "The First Blade was an ancient weapon that served as the foundation for all modern lightsabers."
 }
+
+###
+DELETE http://localhost:3000/products/4
