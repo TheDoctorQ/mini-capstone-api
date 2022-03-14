@@ -27,3 +27,7 @@ Content-Type: application/json
 
 ###
 DELETE http://localhost:3000/products/4
+
+###
+GET http://localhost:3000/query?name=kal&price=400
+

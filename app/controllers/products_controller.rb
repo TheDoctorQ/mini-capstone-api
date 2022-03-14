@@ -37,4 +37,12 @@ class ProductsController < ApplicationController
     render json: {message: "Product removed"}
   end
 
+  def query
+    name = params[:name]
+    price = params[:price]
+    image_url = params[:image_url]
+    description = params[:description]
+    render json: {message: "This IS the item you are searching for.", name: name, price: price, image_url: image_url, description: description}
+  end 
+
 end
