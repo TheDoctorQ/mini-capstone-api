@@ -2,8 +2,8 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.all
-    # render json: products
-    render template: "products/index"
+    render json: products
+    # render template: "products/index"
   end
 
   def show
@@ -17,7 +17,8 @@ class ProductsController < ApplicationController
       name: params[:name],
       price: params[:price],
       image_url: params[:image_url],
-      description: params[:description]
+      description: params[:description],
+      quantity: params[:quantity]
     )
     @product.save
     render template: "products/show"
