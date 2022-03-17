@@ -1,37 +1,54 @@
 class ProductsController < ApplicationController
 
   def index
-    @products = Product.all
-    render json: products
+    products = Product.all
+    render json: products.as_json
     # render template: "products/index"
   end
 
   def show
     product = Product.find_by(id: params[:id])
-    # render json: product
-    render template: "products/show"
+    render json: product.as_json
+    # render template: "products/show"
   end
 
   def create
-    @product = Product.new(
+    #happy path
+    product = Product.new(
       name: params[:name],
       price: params[:price],
       image_url: params[:image_url],
       description: params[:description],
       quantity: params[:quantity]
     )
-    @product.save
+    product.save
     render template: "products/show"
+    
+    if product.save
+      render json: product.as_json
+    else
+      render json: {errors: product.errors.full_messages}, status: :unprocessable_entity
+    end
+
   end
 
+
+
   def update
-    @product = Product.find_by(id: params[:id])
-    @product.name = params[:name]
-    @product.price = params[:price]
-    @product.image_url = params[:image_url]
-    @product.description = params[:description]
-    @product.save
+    product = Product.find_by(id: params[:id])
+    product.name = params[:name]
+    product.price = params[:price]
+    product.image_url = params[:image_url]
+    product.description = params[:description]
+    product.save
     render template: "products/show"
+
+    if product.save
+      render json: product.as_json
+    else
+      render json: {errors: product.errors.full_messages}, status: :unprocessable_entity
+    end
+    
   end
 
   def destroy
