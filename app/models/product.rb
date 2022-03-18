@@ -19,8 +19,10 @@ class Product < ApplicationRecord
     price + tax
   end
   
-  def supplier
-    Supplier.find_by(id: supplier_id)
-  end
+  belongs_to :supplier
+  # ^ does the same as below
+  # def supplier
+  #   Supplier.find_by(id: supplier_id)
+  # end
 
 end
