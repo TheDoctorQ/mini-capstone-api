@@ -11,4 +11,9 @@ Rails.application.routes.draw do
   delete "/products/:id" => "products#destroy"
   get "/query/:name" => "products#query"
   
+  get "/purchase" => "orders#create"
+  get "/cart" => "orders#show"
+  get "/all" => "orders#index"
+
+
 end

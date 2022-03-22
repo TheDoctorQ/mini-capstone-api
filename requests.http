@@ -32,3 +32,11 @@ DELETE http://localhost:3000/products/4
 ###
 GET http://localhost:3000/query/
 
+###
+GET http://localhost:3000/purchase
+
+###
+GET http://localhost:3000/cart
+
+###
+GET http://localhost:3000/all
