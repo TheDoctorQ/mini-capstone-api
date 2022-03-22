@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   def index
+    pp current_user
     if current_user
       @orders = current_user.orders
       render template: "orders/index"
