@@ -1,28 +1,42 @@
 class OrdersController < ApplicationController
-
+  def index
+    if current_user
+      @orders = current_user.orders
+      render template: "orders/index"
+    else
+      render json: {}, status: :unauthorized
+    end
+  end
+  
   def create
-    product = Product.new(
-      name: params[:name],
-      price: params[:price],
-      # image_url: params[:image_url],
-      description: params[:description],
-      quantity: params[:quantity]
+    # subtotal is quantity * price
+    # find the quantity
+    # find the price
+    # multiply them
+    
+    product = Product.find_by(id: params[:product_id])    
+    calculated_subtotal = params[:quantity].to_i * product.price
+    calculated_tax = calculated_subtotal * 0.09
+    
+    order = Order.new(
+      user_id: current_user.id,
+      product_id: params[:product_id],
+      quantity: params[:quantity],
+      subtotal: calculated_subtotal,
+      tax: calculated_tax,
+      total: calculated_subtotal + calculated_tax,
     )
-    product.save
+    order.save
+    render json: order.as_json
   end
 
   def show
-    product = Product.find_by(id: params[:id])
-    # render json: product.as_json
-    render template: "products/show"
+    @order = Order.find_by(id: params[:id])
+    if @order.user_id == current_user.id
+      render template: "orders/show"
+    else
+      render json: {}, status: :unauthorized
+    end
   end
-
-  def index
-    products = Product.all
-    render json: products.as_json
-    # render template: "products/index"
-  end
-
-
-  
 end
+

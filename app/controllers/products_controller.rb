@@ -1,67 +1,55 @@
 class ProductsController < ApplicationController
-
   def index
-    products = Product.all
-    render json: products.as_json
-    # render template: "products/index"
+    @products = Product.all
+    # render json: @products.as_json
+    render template: "products/index"
   end
 
   def show
-    product = Product.find_by(id: params[:id])
-    render json: product.as_json
-    # render template: "products/show"
+    @product = Product.find_by(id: params[:id])
+    render template: "products/show"
   end
 
   def create
-    #happy path
+    # happy
     product = Product.new(
-      name: params[:name],
-      price: params[:price],
-      # image_url: params[:image_url],
+      name: params[:name], 
       description: params[:description],
-      inventory: params[:inventory]
+      price: params[:price],
+      supplier_id: params[:supplier_id],
+      quantity: params[:quantity]
     )
-    product.save
-    render template: "products/show"
     
     if product.save
+      params[:images].each do |image|
+        image = Image.new(url: image, product_id: product.id)
+        image.save
+      end
       render json: product.as_json
     else
       render json: {errors: product.errors.full_messages}, status: :unprocessable_entity
     end
-
+    
   end
 
-
   def update
+    # find the right product
     product = Product.find_by(id: params[:id])
+    # modify that product
     product.name = params[:name]
-    product.price = params[:price]
-    # product.image_url = params[:image_url]
     product.description = params[:description]
-    product.save
-    render template: "products/show"
-
+    product.price = params[:price]
+    product.image_url = params[:image_url]
     if product.save
       render json: product.as_json
     else
       render json: {errors: product.errors.full_messages}, status: :unprocessable_entity
     end
-    
   end
 
   def destroy
     product = Product.find_by(id: params[:id])
     product.destroy
-    render json: {message: "Product removed"}
+    render json: {message: "product removed"}
   end
-
-  def query
-    name = params[:name]
-    price = params[:price]
-    image_url = params[:image_url]
-    description = params[:description]
-    render json: {message: "This IS the item you are searching for.", name: name, price: price, image_url: image_url, description: description}
-  end 
-
 end
