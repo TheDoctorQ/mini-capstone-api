@@ -1,4 +1,6 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user
+
   def index
     pp current_user
     if current_user
@@ -39,5 +41,6 @@ class OrdersController < ApplicationController
       render json: {}, status: :unauthorized
     end
   end
+
 end
 

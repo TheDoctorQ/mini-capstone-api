@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+  before_action :authenticate_admin, only: [:create, :update, :destroy]
+
   def index
     @products = Product.all
     # render json: @products.as_json
@@ -11,7 +13,6 @@ class ProductsController < ApplicationController
   end
 
   def create
-    # happy
     product = Product.new(
       name: params[:name], 
       description: params[:description],
