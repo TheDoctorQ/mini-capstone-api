@@ -39,7 +39,8 @@ class ProductsController < ApplicationController
     product.name = params[:name]
     product.description = params[:description]
     product.price = params[:price]
-    product.image_url = params[:image_url]
+    product.quantity = params[:quantity]
+    # product.image_url = params[:image_url]
     if product.save
       render json: product.as_json
     else

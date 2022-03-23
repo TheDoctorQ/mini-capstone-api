@@ -32,8 +32,8 @@ class OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.find_by(id: params[:id])
-    if @order.user_id == current_user.id
+    order = Order.find_by(id: params[:id])
+    if order.user_id == current_user.id
       render template: "orders/show"
     else
       render json: {}, status: :unauthorized

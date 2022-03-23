@@ -10,19 +10,19 @@ Content-Type: application/json
 {
   "name": "Cal's Saber",
   "price": 350,
-  "image_url": "https://static.wikia.nocookie.net/starwars/images/4/48/CalsNewLightsaber.png/revision/latest?cb=20191204211752",
+  "quantity": 2,
   "description": "A saber belonging to the escaped padawan Cal Kestis; silver hilt, cracked purple kyber crystal.",
   "quantity": 1
 }
 
 ###
-PATCH http://localhost:3000/products/2
+PATCH http://localhost:3000/products/6.json
 Content-Type: application/json
 
 {
   "name": "First Blade",
   "price": 10000,
-  "image_url": "https://static.wikia.nocookie.net/starwars/images/c/c4/First_Blade.png/revision/latest/scale-to-width-down/999?cb=20141013005839",
+  "quantity": 1,
   "description": "The First Blade was an ancient weapon that served as the foundation for all modern lightsabers."
 }
 
@@ -49,7 +49,7 @@ Content-Type: application/json
 
 {
   "name": "Test name",
-  "email": "test@test.com",
+  "email": "test2@test.com",
   "password": "password",
   "password_confirmation": "password"
 }
