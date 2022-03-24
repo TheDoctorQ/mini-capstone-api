@@ -48,8 +48,8 @@ POST http://localhost:3000/users.json
 Content-Type: application/json
 
 {
-  "name": "Slighty Bobfost",
-  "email": "hitch@hikers.com",
+  "name": "Slartibartfast",
+  "email": "hitch@hikers2.com",
   "password": "password",
   "password_confirmation": "password"
 }
@@ -59,7 +59,7 @@ POST http://localhost:3000/sessions.json
 Content-Type: application/json
 
 {
-  "email": "test@test.com",
+  "email": "hitch@hikers2.com",
   "password": "password"
 }
 
