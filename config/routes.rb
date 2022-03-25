@@ -14,6 +14,12 @@ Rails.application.routes.draw do
 
   get "/orders" => "orders#index"
   post "/orders" => "orders#create"
-  get "/orders/:id" => "orders#show"
-  
+  get "/orders/:id" => "orders#show" 
+
+  get "/cart" => "shoppingcart#index"
+  get "/cart/:id" => "shoppingcart#show"
+  post "/cart" => "shoppingcart#create"
+  patch "/cart/:id" => "shoppingcart#update"
+  delete "/cart/:id" => "shoppingcart#destroy"
+
 end

@@ -12,11 +12,6 @@ class OrdersController < ApplicationController
   end
   
   def create
-    # subtotal is quantity * price
-    # find the quantity
-    # find the price
-    # multiply them
-    
     product = Product.find_by(id: params[:product_id])    
     calculated_subtotal = params[:quantity].to_i * product.price
     calculated_tax = calculated_subtotal * 0.09
