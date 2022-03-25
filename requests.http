@@ -73,3 +73,5 @@ Content-Type: application/json
   "width": 640,
   "height": 480
 }
+###
+POST http://localhost:3000/cart/
