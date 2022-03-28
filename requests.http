@@ -65,7 +65,7 @@ Content-Type: application/json
 
 ### Photos create
 POST http://localhost:3000/photos.json
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjozLCJleHAiOjE2Mjk5OTI4NjR9.G2ExsrDYn3oE0vJkvm4T6Po2GbNpH5cqTEaVPVuK_MA
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2LCJleHAiOjE2NDg1NzQ0MTl9.WZXEfZHToRkIpM5jrOdh8gtD5AjNeF-2GaC2azRdqOk
 Content-Type: application/json
 
 {
@@ -74,4 +74,13 @@ Content-Type: application/json
   "height": 480
 }
 ###
-POST http://localhost:3000/cart/
+POST http://localhost:3000/orders/
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2LCJleHAiOjE2NDg1NzQ0MTl9.WZXEfZHToRkIpM5jrOdh8gtD5AjNeF-2GaC2azRdqOk
+Content-Type: application/json
+
+{
+  "user_id": 6,
+  "product_id": 4,
+  "quantity": 1,
+  "status": "carted"
+}
