@@ -1,18 +1,20 @@
 GET http://localhost:3000/products.json
 
 ###
-GET http://localhost:3000/products/1
+GET http://localhost:3000/products/4.json
 
 ###
-POST http://localhost:3000/products
+POST http://localhost:3000/products.json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo3LCJleHAiOjE2NDk4NzE1MTF9.10Ds4QkMKAVs9CGfOcUyU51HmDyJemP7bf_tfuxPsfg
 Content-Type: application/json
 
 {
-  "name": "Cal's Saber",
-  "price": 350,
-  "quantity": 2,
-  "description": "A saber belonging to the escaped padawan Cal Kestis; silver hilt, cracked purple kyber crystal.",
-  "quantity": 1
+  "name": "Serenity",
+  "price": 350000,
+  "quantity": 1,
+  "description": "The firefly class ship, Serenity.",
+  "quantity": 1,
+  "supplier_id": 23
 }
 
 ###
@@ -48,8 +50,8 @@ POST http://localhost:3000/users.json
 Content-Type: application/json
 
 {
-  "name": "Slartibartfast",
-  "email": "hitch@hikers2.com",
+  "name": "Malcolm Reynolds",
+  "email": "mal@firefly.verse",
   "password": "password",
   "password_confirmation": "password"
 }
@@ -59,7 +61,7 @@ POST http://localhost:3000/sessions.json
 Content-Type: application/json
 
 {
-  "email": "hitch@hikers2.com",
+  "email": "mal@firefly.verse",
   "password": "password"
 }
 

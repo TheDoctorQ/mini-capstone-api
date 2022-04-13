@@ -1,19 +1,20 @@
 class ProductsController < ApplicationController
-  before_action :authenticate_admin, only: [:create, :update, :destroy]
+  # before_action :authenticate_admin, only: [:create, :update, :destroy]
 
   def index
     @products = Product.all
-    # render json: @products.as_json
+    # render json: @products
     render template: "products/index"
   end
 
   def show
     @product = Product.find_by(id: params[:id])
     render template: "products/show"
+    # render json: @product
   end
 
   def create
-    product = Product.new(
+    @product = Product.new(
       name: params[:name], 
       description: params[:description],
       price: params[:price],
@@ -21,7 +22,7 @@ class ProductsController < ApplicationController
       quantity: params[:quantity]
     )
     
-    if product.save
+    if @product.save
       params[:images].each do |image|
         image = Image.new(url: image, product_id: product.id)
         image.save
@@ -35,7 +36,7 @@ class ProductsController < ApplicationController
 
   def update
     # find the right product
-    product = Product.find_by(id: params[:id])
+    @product = Product.find_by(id: params[:id])
     # modify that product
     product.name = params[:name]
     product.description = params[:description]
@@ -43,14 +44,14 @@ class ProductsController < ApplicationController
     product.quantity = params[:quantity]
     # product.image_url = params[:image_url]
     if product.save
-      render json: product.as_json
+      render json: product
     else
       render json: {errors: product.errors.full_messages}, status: :unprocessable_entity
     end
   end
 
   def destroy
-    product = Product.find_by(id: params[:id])
+    @product = Product.find_by(id: params[:id])
     product.destroy
     render json: {message: "product removed"}
   end
