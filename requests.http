@@ -1,20 +1,20 @@
 GET http://localhost:3000/products.json
 
 ###
-GET http://localhost:3000/products/4.json
+GET http://localhost:3000/products/5.json
 
 ###
 POST http://localhost:3000/products.json
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo3LCJleHAiOjE2NDk4NzE1MTF9.10Ds4QkMKAVs9CGfOcUyU51HmDyJemP7bf_tfuxPsfg
+# Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo3LCJleHAiOjE2NDk4NzE1MTF9.10Ds4QkMKAVs9CGfOcUyU51HmDyJemP7bf_tfuxPsfg
 Content-Type: application/json
 
 {
-  "name": "Serenity",
-  "price": 350000,
-  "quantity": 1,
-  "description": "The firefly class ship, Serenity.",
-  "quantity": 1,
-  "supplier_id": 23
+  "name": "Scouter",
+  "price": 3500,
+  "quantity": 38,
+  "description": "Detects power levels.",
+  "supplier_id": 23,
+  "image": "https://i.ytimg.com/vi/ZZV4tMVi0-M/maxresdefault.jpg"
 }
 
 ###
@@ -29,7 +29,7 @@ Content-Type: application/json
 }
 
 ###
-DELETE http://localhost:3000/products/4
+DELETE http://localhost:3000/products/8
 
 ###
 POST http://localhost:3000/orders
@@ -50,10 +50,11 @@ POST http://localhost:3000/users.json
 Content-Type: application/json
 
 {
-  "name": "Malcolm Reynolds",
-  "email": "mal@firefly.verse",
+  "name": "The Doctor",
+  "email": "dw@who.tardis",
   "password": "password",
-  "password_confirmation": "password"
+  "password_confirmation": "password",
+  "admin": true
 }
 
 ### Sessions create (login)
