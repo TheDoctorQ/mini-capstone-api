@@ -18,14 +18,14 @@ Content-Type: application/json
 }
 
 ###
-PATCH http://localhost:3000/products/6.json
+PATCH http://localhost:3000/products/7.json
 Content-Type: application/json
 
 {
-  "name": "First Blade",
-  "price": 10000,
-  "quantity": 1,
-  "description": "The First Blade was an ancient weapon that served as the foundation for all modern lightsabers."
+  "name": "Saiyan Scouter",
+  "price": 3500,
+  "description": "Detects power levels.",
+  "quantity": 38
 }
 
 ###

@@ -36,7 +36,7 @@ class ProductsController < ApplicationController
 
   def update
     # find the right product
-    @product = Product.find_by(id: params[:id])
+    product = Product.find_by(id: params[:id])
     # modify that product
     product.name = params[:name]
     product.description = params[:description]
@@ -51,7 +51,7 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    @product = Product.find_by(id: params[:id])
+    product = Product.find_by(id: params[:id])
     product.destroy
     render json: {message: "product removed"}
   end
