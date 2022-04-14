@@ -1,3 +1,6 @@
+@jwt = eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo4LCJleHAiOjE2NDk5OTY2Njd9.WIlUMyOlKc5hMg0OuVFCTpZ7Ze3VYKk6SkQtKpBTamk
+
+
 GET http://localhost:3000/products.json
 
 ###
@@ -5,7 +8,7 @@ GET http://localhost:3000/products/5.json
 
 ###
 POST http://localhost:3000/products.json
-# Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo3LCJleHAiOjE2NDk4NzE1MTF9.10Ds4QkMKAVs9CGfOcUyU51HmDyJemP7bf_tfuxPsfg
+Authorization: Bearer {{jwt}}
 Content-Type: application/json
 
 {
@@ -19,6 +22,7 @@ Content-Type: application/json
 
 ###
 PATCH http://localhost:3000/products/7.json
+Authorization: Bearer {{jwt}}
 Content-Type: application/json
 
 {
@@ -33,10 +37,16 @@ DELETE http://localhost:3000/products/8
 
 ###
 POST http://localhost:3000/orders
+Authorization: Bearer {{jwt}}
 Content-Type: application/json
 
 {
-
+  "user_id": 2,
+  "product_id": 4,
+  "quantity": 3,
+  "subtotal": 450,
+  "tax": 50,
+  "total": 500
 }
 
 ###
@@ -62,13 +72,14 @@ POST http://localhost:3000/sessions.json
 Content-Type: application/json
 
 {
-  "email": "mal@firefly.verse",
+  "email": "dw@who.tardis",
   "password": "password"
 }
 
 ### Photos create
 POST http://localhost:3000/photos.json
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2LCJleHAiOjE2NDg1NzQ0MTl9.WZXEfZHToRkIpM5jrOdh8gtD5AjNeF-2GaC2azRdqOk
+Authorization: Bearer {{jwt}}
+
 Content-Type: application/json
 
 {
@@ -78,7 +89,8 @@ Content-Type: application/json
 }
 ###
 POST http://localhost:3000/orders/
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2LCJleHAiOjE2NDg1NzQ0MTl9.WZXEfZHToRkIpM5jrOdh8gtD5AjNeF-2GaC2azRdqOk
+Authorization: Bearer {{jwt}}
+
 Content-Type: application/json
 
 {

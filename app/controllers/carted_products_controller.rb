@@ -1,32 +1,25 @@
 class CartedProductsController < ApplicationController
 
   def index
-    carted_products = CartedProduct.all
-    render carted_products.as_json
-    # render json: {message: "index"}
+    carted_products = CartedProduct.where(user_id: current_user.id, status: "carted")
+    render json: carted_products.as_json
   end
-
-  def show
-    carted_product = CartedProduct.find_by(id: params[:id])
-    render carted_product.as_json
-    # carted_products = CartedProduct.find_by(id: 1)
-    # render json: {message: "show"} 
-  end
-
+  
   def create
-    carted_products = CartedProduct.create
-    
-    render json: {message: "create"}
-  end
-
-  def update
-    carted_product = CartedProduct.update
-    render json: {message: "update"}
+    carted_product = CartedProduct.new(
+      user_id: current_user.id, 
+      product_id: params[:product_id], 
+      quantity: params[:quantity], 
+      status: "carted"
+    )
+    carted_product.save
+    render json: carted_product.as_json
   end
 
   def destroy
     carted_product = CartedProduct.find_by(id: params[:id])
-    render carted_product
+    carted_product.destroy
+    render json: {message: "removed from shopping cart"}
   end
   
 end
