@@ -17,7 +17,9 @@ Content-Type: application/json
   "quantity": 38,
   "description": "Detects power levels.",
   "supplier_id": 23,
-  "image": "https://i.ytimg.com/vi/ZZV4tMVi0-M/maxresdefault.jpg"
+  "images": [
+    "https://i.ytimg.com/vi/ZZV4tMVi0-M/maxresdefault.jpg", "https://i.pinimg.com/originals/46/48/ef/4648ef14f0488b8654c3486f7719355b.png" 
+  ]
 }
 
 ###
@@ -33,7 +35,7 @@ Content-Type: application/json
 }
 
 ###
-DELETE http://localhost:3000/products/8
+DELETE http://localhost:3000/products/11
 
 ###
 POST http://localhost:3000/orders
@@ -76,17 +78,6 @@ Content-Type: application/json
   "password": "password"
 }
 
-### Photos create
-POST http://localhost:3000/photos.json
-Authorization: Bearer {{jwt}}
-
-Content-Type: application/json
-
-{
-  "name": "Test name",
-  "width": 640,
-  "height": 480
-}
 ###
 POST http://localhost:3000/orders/
 Authorization: Bearer {{jwt}}

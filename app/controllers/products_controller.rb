@@ -24,10 +24,10 @@ class ProductsController < ApplicationController
     
     if @product.save
       params[:images].each do |image|
-        image = Image.new(url: image, product_id: product.id)
+        image = Image.new(url: image, product_id: @product.id)
         image.save
       end
-      render json: product.as_json
+      render json: @product.as_json
     else
       render json: {errors: product.errors.full_messages}, status: :unprocessable_entity
     end
