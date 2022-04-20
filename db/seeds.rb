@@ -15,7 +15,7 @@
 # product = Product.new(name: "Kyber Crystal - Green", price: 200, description: "A crystal used to power and focus the Jedi Lightsaber weapon.", quantity: 18, supplier_id: 42)
 # product.save
 
-# product = Product.new(name: "Kyber Crystal - Cracked Purple", price: 400, description: "A crystal used to power and focus the Jedi Lightsaber weapon, due to the crack in the crystal the emanating power will appear unstable.", quantity: 2, supplier_id: 42)
+# product = Product.new(name: "Kyber Crystal - Cracked Purple", price: 400, description: "A crystal used to power and focus the Jedi Lightsaber weapon, due to the crack in the crystal the emanating power will appear unstable.", quantity: 2, supplier_id: 1)
 # product.save
 
 products = Product.where(supplier_id: nil)
