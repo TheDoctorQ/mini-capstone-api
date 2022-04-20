@@ -29,24 +29,25 @@ class ProductsController < ApplicationController
       end
       render json: @product.as_json
     else
-      render json: {errors: product.errors.full_messages}, status: :unprocessable_entity
+      render json: {errors: @product.errors.full_messages}, status: :unprocessable_entity
     end
     
   end
 
   def update
     # find the right product
-    product = Product.find_by(id: params[:id])
+    @product = Product.find_by(id: params[:id])
     # modify that product
-    product.name = params[:name]
-    product.description = params[:description]
-    product.price = params[:price]
-    product.quantity = params[:quantity]
+    @product.name = params[:name] || @product.name
+    @product.description = params[:description] || @product.description
+    @product.price = params[:price] || @product.price
+    @product.quantity = params[:quantity]
+    @product.supplier_id = params[:supplier_id] || @product.supplier_id
     # product.image_url = params[:image_url]
-    if product.save
-      render json: product
+    if @product.save
+      render json: @product
     else
-      render json: {errors: product.errors.full_messages}, status: :unprocessable_entity
+      render json: {errors: @product.errors.full_messages}, status: :unprocessable_entity
     end
   end
 

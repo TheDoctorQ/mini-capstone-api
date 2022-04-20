@@ -1,26 +1,60 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+# User.create!([
+#   {name: "Test name", email: "test@test.com", password_digest: "$2a$12$gIiCWmA1KKaoF3yWH5cLHueTiLI05NiuxAn409xuRJyOIxdhuUcdy", admin: false},
+#   {name: "Test name", email: "test2@test.com", password_digest: "$2a$12$KUWnlrBGuooNCshPlpPMLedtY.ClhHx8firrUwjHUuBjlmfJzxF7q", admin: false},
+#   {name: "Dave Bowman", email: "Dave@HAL.com", password_digest: "$2a$12$c9OxvLNfPEPKQAMqiymBOOg7O7eabs2mFJ3QT2wkoj.f4S9EFMjD.", admin: false},
+#   {name: "Idris Constantine", email: "IC@cs.com", password_digest: "$2a$12$qvaKtIjLXI240rUy9t7.MOc2vveASNRQ3Tl7z5a.EPLIEDUSdF1aW", admin: false},
+#   {name: "Slighty Bobfost", email: "hitch@hikers.com", password_digest: "$2a$12$5pM4GZfLp4ouTdS5CmuudOgZQ05NqNF61tKeTgoVyFrZFEeAlQGNS", admin: false},
+#   {name: "Slartibartfast", email: "hitch@hikers2.com", password_digest: "$2a$12$7S5RaIB0vZy8jviN00SHjeoDpFpzwtXR.S3IYDSuGHYNs2ul//pFG", admin: false},
+#   {name: "Malcolm Reynolds", email: "mal@firefly.verse", password_digest: "$2a$12$Ydn/NQw0z17QJJHtdIApHOPevIMICIFK.9nhLiW0NlCRiedFrFQdq", admin: true},
+#   {name: "The Doctor", email: "dw@who.tardis", password_digest: "$2a$12$Cc6udkSD7CHvx1gBvCotVO9CIUrlDt4Oy84mDR7Ntf1dIRHIz5xLe", admin: true}
+# ])
 
-product = Product.new(name: "Kanan's Saber", price: 900, description: "A lightsaber that once belonged to the Jedi Kanan Jarrus; green hilt, blue kyber crystal.", quantity: 1, supplier_id: 1)
-product.save
+# Supplier.create!([
+#   {name: "JeddhaCo", email: "jedd@h.org", phone_number: "123456789"},
+#   {name: "Coruscant Corp.", email: "CoruCore@sith.gov", phone_number: "38462973"},
+#   {name: "MandaloreUnited", email: "mando@dsaber.reb", phone_number: "77698732"}
+# ])
 
-product = Product.new(name: "Kyber Crystal - Blue", price: 200, description: "A crystal used to power and focus the Jedi Lightsaber weapon.", quantity: 12, supplier_id: 1)
-product.save
+Product.create!([
+  {name: "Kanan's Saber", price: 900, description: "A lightsaber that once belonged to the Jedi Kanan Jarrus; green hilt, blue kyber crystal.", supplier_id: 1, quantity: 1},
+  {name: "Cal's Saber", price: 300, description: "A lightsaber that once belonged to the escaped padawan Cal Kestis; silver hilt, purple cracked kyber crystal.", supplier_id: 23, quantity: 1},
+  {name: "Kyber Crystal - Cracked Purple", price: 400, description: "A crystal used to power and focus the Jedi Lightsaber weapon, due to the crack in the crystal the emanating power will appear unstable.", supplier_id: 1, quantity: 2},
+  {name: "Kyber Crystal - Blue", price: 200, description: "A crystal used to power and focus the Jedi Lightsaber weapon.", supplier_id: 1, quantity: 12},
+  {name: "Serenity", price: 350000, description: "The firefly class ship, Serenity.", supplier_id: 23, quantity: 1},
+  {name: "Saiyan Scouter", price: 3500, description: "Detects power levels.", supplier_id: 23, quantity: 38},
+  {name: "Scouter", price: 3500, description: "Detects power levels.", supplier_id: 23, quantity: 38},
+  {name: "Naboo Starfighter", price: 42000, description: "sleek, agile interceptor", supplier_id: 1, quantity: 1}
+])
 
-product = Product.new(name: "Kyber Crystal - Green", price: 200, description: "A crystal used to power and focus the Jedi Lightsaber weapon.", quantity: 18, supplier_id: 1)
-product.save
+Image.create!([
+  {url: "https://upload.wikimedia.org/wikipedia/en/1/11/Serenityship.jpg", product_id: 6},
+  {url: "https://i.ytimg.com/vi/ZZV4tMVi0-M/maxresdefault.jpg", product_id: 11},
+  {url: "https://i.pinimg.com/originals/46/48/ef/4648ef14f0488b8654c3486f7719355b.png", product_id: 11},
+  {url: "https://i.ytimg.com/vi/ZZV4tMVi0-M/maxresdefault.jpg", product_id: 12},
+  {url: "https://i.pinimg.com/originals/46/48/ef/4648ef14f0488b8654c3486f7719355b.png", product_id: 12},
+  {url: "https://static.wikia.nocookie.net/starwars/images/c/cf/PadmeAmidalaChromiumN1-SWZ.png/revision/latest?cb=20200503164856", product_id: 13}
+])
 
-product = Product.new(name: "Kyber Crystal - Cracked Purple", price: 400, description: "A crystal used to power and focus the Jedi Lightsaber weapon, due to the crack in the crystal the emanating power will appear unstable.", quantity: 2, supplier_id: 1)
-product.save
+Category.create!([
+  {name: "Lightsabers"},
+  {name: "Kyber"},
+  {name: "Ships"},
+  {name: "Speeders"},
+  {name: "Armor"}
+])
 
-# products = Product.where(supplier_id: nil)
+CartedProduct.create!([
+  {user_id: nil, product_id: nil, quantity: nil, status: nil, order_id: nil},
+  {user_id: 6, product_id: 2, quantity: 1, status: "carted", order_id: nil}
+])
 
-# products.each do |product|
-#   product.supplier_id = rand(1..2)
-#   product.save
-# end
+CategoryProduct.create!([
+  {product_id: 1, category_id: 1},
+  {product_id: 2, category_id: 1},
+  {product_id: 3, category_id: 2},
+  {product_id: 5, category_id: 2}
+])
+
+Order.create!([
+  {user_id: 1, product_id: 6, quantity: 4, subtotal: "3000.0", tax: "100.0", total: "3100.0"}
+])
