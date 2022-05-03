@@ -1,4 +1,4 @@
-@jwt = eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo4LCJleHAiOjE2NDk5OTY2Njd9.WIlUMyOlKc5hMg0OuVFCTpZ7Ze3VYKk6SkQtKpBTamk
+@jwt = 
 
 
 GET http://localhost:3000/products.json
